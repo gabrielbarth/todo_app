@@ -8,6 +8,6 @@ part 'api_service.g.dart';
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
-  @GET("/todos")
+  @GET("/users/1/todos")
   Future<List<Task>> getTasks();
 }
