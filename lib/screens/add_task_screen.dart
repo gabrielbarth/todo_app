@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/task.dart';
@@ -25,7 +26,7 @@ class AddTaskScreen extends StatelessWidget {
               onPressed: () {
                 if (_controller.text.isNotEmpty) {
                   final newTask = Task(
-                    id: DateTime.now().toString(),
+                    id: Random().nextInt(100),
                     title: _controller.text,
                   );
                   Provider.of<TaskProvider>(context, listen: false)
