@@ -7,6 +7,8 @@ import '../providers/task_provider.dart';
 class AddTaskScreen extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
 
+  AddTaskScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
