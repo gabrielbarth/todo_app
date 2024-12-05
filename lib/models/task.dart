@@ -1,15 +1,15 @@
 class Task {
   final int id;
   final String title;
-  final bool isCompleted;
+  bool completed;
 
-  Task({required this.id, required this.title, this.isCompleted = false});
+  Task({required this.id, required this.title, this.completed = false});
 
   factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
       id: json['id'],
       title: json['title'],
-      isCompleted: json['completed'] ?? false,
+      completed: json['completed'] ?? false,
     );
   }
 
@@ -17,7 +17,7 @@ class Task {
     return {
       'id': id,
       'title': title,
-      'completed': isCompleted,
+      'completed': completed,
     };
   }
 }
