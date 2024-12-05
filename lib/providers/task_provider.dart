@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/task.dart';
 import 'package:todo_app/services/api_service.dart';
@@ -45,6 +44,7 @@ class TaskProvider with ChangeNotifier {
         await LocalStorage.saveTasks(_tasks);
       }
     } catch (e) {
+      // ignore: avoid_print
       print("Failed to fetch tasks: $e");
     } finally {
       _isLoading = false;

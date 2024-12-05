@@ -30,10 +30,10 @@ class HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Task Manager"),
+        title: const Text("Task Manager"),
         actions: [
           IconButton(
-            icon: Icon(Icons.brightness_6),
+            icon: const Icon(Icons.brightness_6),
             onPressed: () {
               taskProvider.toggleTheme();
             },
@@ -41,7 +41,7 @@ class HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: taskProvider.isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : ListView.builder(
               itemCount: taskProvider.tasks.length,
               itemBuilder: (context, index) =>
@@ -56,13 +56,13 @@ class HomeScreenState extends State<HomeScreen> {
 
           if (result != null) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
+              const SnackBar(
                 content: Text('Task adicionada!'),
               ),
             );
           }
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

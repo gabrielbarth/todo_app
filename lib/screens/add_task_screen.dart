@@ -13,7 +13,7 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Task"),
+        title: const Text("Add Task"),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -21,9 +21,9 @@ class AddTaskScreen extends StatelessWidget {
           children: [
             TextField(
               controller: _controller,
-              decoration: InputDecoration(labelText: "Task Title"),
+              decoration: const InputDecoration(labelText: "Task Title"),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
                 if (_controller.text.isNotEmpty) {
@@ -36,7 +36,7 @@ class AddTaskScreen extends StatelessWidget {
                   Navigator.pop(context, newTask);
                 }
               },
-              child: Text("Add Task"),
+              child: const Text("Add Task"),
             ),
           ],
         ),
