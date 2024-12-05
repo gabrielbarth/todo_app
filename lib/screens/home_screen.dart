@@ -2,23 +2,26 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/services/api_service.dart';
-import '../models/task.dart';
 import '../providers/task_provider.dart';
 import '../screens/add_task_screen.dart';
 import '../widgets/task_card.dart';
-import '../utils/platform_channel.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
+  final apiService = ApiService(Dio());
+
   @override
   void initState() {
     super.initState();
-    final apiService = ApiService(Dio());
-    Provider.of<TaskProvider>(context, listen: false).fetchTasks(apiService);
+    var provider = Provider.of<TaskProvider>(context, listen: false);
+    provider.fetchTasks(apiService);
+    provider.setTheme();
   }
 
   @override
@@ -52,7 +55,11 @@ class _HomeScreenState extends State<HomeScreen> {
           );
 
           if (result != null) {
-            PlatformChannel.showToast("Task added!");
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text('Task adicionada!'),
+              ),
+            );
           }
         },
         child: Icon(Icons.add),

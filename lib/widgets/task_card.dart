@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/providers/task_provider.dart';
 import '../models/task.dart';
 
 class TaskCard extends StatelessWidget {
   final Task task;
 
-  const TaskCard({Key? key, required this.task}) : super(key: key);
+  const TaskCard({super.key, required this.task});
+
+  void onChanged(BuildContext context) {
+    final taskProvider = Provider.of<TaskProvider>(context, listen: false);
+    taskProvider.toggleTaskCompletion(task);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,11 +20,7 @@ class TaskCard extends StatelessWidget {
       child: ListTile(
         title: Text(task.title),
         trailing: Checkbox(
-          value: task.isCompleted,
-          onChanged: (value) {
-            // Handle completion toggle if necessary
-          },
-        ),
+            value: task.completed, onChanged: (_) => onChanged(context)),
       ),
     );
   }
