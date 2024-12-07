@@ -1,16 +1,16 @@
 # todo_app
 
-A new Flutter project.
+## Funcionalidades
+- Obtém TODOs da api https://jsonplaceholder.typicode.com
+- Salva TODOs no LocalStorage (shared_preferences)
+- Gerencia estados globalmente com Provider:
+  -  Obtém TODOS e salva no storage;
+  -  Adiciona novos TODOs e salva no storage;
+  -  Marca/Desmarca TODOs e salva no storage;
+  -  Altera tema e salva no storage;
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## Demonstração
 
-A few resources to get you started if this is your first Flutter project:
+https://github.com/user-attachments/assets/0076014b-3eec-4485-9963-e764814e96f2
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
