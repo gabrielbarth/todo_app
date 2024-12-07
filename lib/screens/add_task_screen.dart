@@ -5,9 +5,19 @@ import '../models/task.dart';
 import '../providers/task_provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  AddTaskScreen({super.key});
   final TextEditingController _controller = TextEditingController();
 
-  AddTaskScreen({super.key});
+  void _onPressed(context) {
+    if (_controller.text.isEmpty) return;
+
+    final newTask = Task(
+      id: Random().nextInt(100),
+      title: _controller.text,
+    );
+    Provider.of<TaskProvider>(context, listen: false).addTask(newTask);
+    Navigator.pop(context, newTask);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,17 +35,7 @@ class AddTaskScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
-                if (_controller.text.isNotEmpty) {
-                  final newTask = Task(
-                    id: Random().nextInt(100),
-                    title: _controller.text,
-                  );
-                  Provider.of<TaskProvider>(context, listen: false)
-                      .addTask(newTask);
-                  Navigator.pop(context, newTask);
-                }
-              },
+              onPressed: () => _onPressed(context),
               child: const Text("Add Task"),
             ),
           ],

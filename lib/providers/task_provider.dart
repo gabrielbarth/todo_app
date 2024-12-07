@@ -52,7 +52,7 @@ class TaskProvider with ChangeNotifier {
     }
   }
 
-  void setTheme() async {
+  Future<void> setTheme() async {
     _isDarkMode = await LocalStorage.getTheme();
     notifyListeners();
   }
